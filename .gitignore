@@ -14,6 +14,5 @@ CNAME
 .env
 .env.*
 *.env
-blockly-translations
 temp
 .vercel
