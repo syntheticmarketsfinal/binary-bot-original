@@ -127,6 +127,7 @@
         "react-helmet": "^6.1.0",
         "react-i18next": "^13.0.1",
         "react-redux": "^7.2.6",
+        "react-render-html": "^0.6.0",
         "react-router-dom": "^6.14.2"
     }
 }
