@@ -29,6 +29,10 @@ module.exports = {
                 test: /\.(css|scss|sass)$/,
                 use: ['style-loader', 'css-loader', 'sass-loader'],
             },
+			 {
+            test: /\.json$/,
+            type: 'json',  // This line is not typically necessary as Webpack 5 automatically handles JSON.
+        },
         ],
     },
     plugins: [
@@ -109,5 +113,10 @@ module.exports = {
             '@utilities': path.resolve(__dirname, 'src/utilities'),
             '@currency-config': path.resolve(__dirname, 'src/currency-config'),
         },
+		 fallback: {
+            "util": require.resolve("util/"),  // Polyfill for util
+            "stream": require.resolve("stream-browserify"),  // Polyfill for stream if needed
+            // Add other polyfills here if required by your errors
+        }
     },
 };

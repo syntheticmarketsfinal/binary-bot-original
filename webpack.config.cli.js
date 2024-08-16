@@ -36,10 +36,10 @@ module.exports = {
         new CleanWebpackPlugin(['www']),
         new Dotenv(),
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
+            // 'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
             'process.env.TRACKJS_TOKEN': JSON.stringify(process.env.TRACKJS_TOKEN),
             'process.env.GD_APP_ID': JSON.stringify(process.env.GD_APP_ID),
-            'process.env.GD_CLIENT_ID': JSON.stringify(process.env.GD_CLIENT_ID),
+            // 'process.env.GD_CLIENT_ID': JSON.stringify(process.env.GD_CLIENT_ID),
             'process.env.GD_API_KEY': JSON.stringify(process.env.GD_API_KEY),
             'process.env.DATADOG_CLIENT_LOGS_TOKEN': JSON.stringify(process.env.DATADOG_CLIENT_LOGS_TOKEN),
             'process.env.DATADOG_LOGS_SESSION_SAMPLE_RATE': JSON.stringify(
@@ -120,6 +120,11 @@ module.exports = {
             '@utilities': path.resolve(__dirname, 'src/utilities'),
             '@currency-config': path.resolve(__dirname, 'src/currency-config'),
         },
+        fallback:
+        {
+            "util": require.resolve("util/"),  // Polyfill for util
+            "stream": require.resolve("stream-browserify"),  // Polyfill for stream if needed
+        }
     },
     optimization: {
         minimize: true,
